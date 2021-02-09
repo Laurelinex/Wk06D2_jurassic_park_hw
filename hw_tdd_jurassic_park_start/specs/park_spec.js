@@ -83,4 +83,12 @@ describe('Park', function() {
     assert.strictEqual(expected, park.calculateYearlyRevenue());
   });
 
+  it('should be able to remove all dinosaurs of a particular species', function() {
+    park.addDino(dino_3);
+    park.addDino(dino_4);
+    park.addDino(dino_5);
+    const expected = [dino_3];
+    assert.deepStrictEqual(expected, park.removeAllDinosBySpecies('Stegosaurus'));
+  })
+
 });

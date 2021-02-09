@@ -34,7 +34,7 @@ Park.prototype.findDinosBySpecies = function(species) {
         }
     }
     return new_collection_by_species;
-;}
+};
 
 Park.prototype.calculateTotalVisitorsPerDay = function() {
     let visitors_per_day = 0;
@@ -52,6 +52,17 @@ Park.prototype.calculateTotalVisitorsPerYear = function() {
 
 Park.prototype.calculateYearlyRevenue = function() {
     return this.calculateTotalVisitorsPerYear() * this.ticket_price;
-}
+};
+
+Park.prototype.removeAllDinosBySpecies = function(species) {
+    const collection_without_species = [];
+    for (let i = 0; i < this.dino_collection.length; i++) {
+        let dino = this.dino_collection[i];
+        if (dino.species != species) {
+            collection_without_species.push(dino);
+        }
+    }
+    return collection_without_species;
+};
 
 module.exports = Park;
