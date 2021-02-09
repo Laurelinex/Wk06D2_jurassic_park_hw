@@ -48,6 +48,10 @@ Park.prototype.calculateTotalVisitorsPerDay = function() {
 Park.prototype.calculateTotalVisitorsPerYear = function() {
     const average_days_in_year = 365;
     return this.calculateTotalVisitorsPerDay() * average_days_in_year;
+};
+
+Park.prototype.calculateYearlyRevenue = function() {
+    return this.calculateTotalVisitorsPerYear() * this.ticket_price;
 }
 
 module.exports = Park;
