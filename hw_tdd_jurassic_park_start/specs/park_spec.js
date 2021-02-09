@@ -37,7 +37,11 @@ describe('Park', function() {
   });
 
   it('should be able to remove a dinosaur from its collection', function() {
-
+    park.addDino(dino_1);
+    park.addDino(dino_2);
+    park.removeDino(dino_2);
+    const expected = [dino_1];
+    assert.deepStrictEqual(expected, park.dino_collection)
   });
 
   it('should be able to find the dinosaur that attracts the most visitors');
