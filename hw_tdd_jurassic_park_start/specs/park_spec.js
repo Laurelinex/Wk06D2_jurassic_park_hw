@@ -44,7 +44,14 @@ describe('Park', function() {
     assert.deepStrictEqual(expected, park.dino_collection)
   });
 
-  it('should be able to find the dinosaur that attracts the most visitors');
+  it('should be able to find the dinosaur that attracts the most visitors', function() {
+    park.addDino(dino_1);
+    park.addDino(dino_2);
+    park.addDino(dino_3);
+    park.addDino(dino_4);
+    const expected = dino_2;
+    assert.strictEqual(expected, park.findMostGuestsDino());
+  });
 
   it('should be able to find all dinosaurs of a particular species');
 
