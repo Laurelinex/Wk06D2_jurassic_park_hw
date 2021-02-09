@@ -13,6 +13,7 @@ describe('Park', function() {
     dino_2 = new Dinosaur('Loch Ness Monster', 'omnivore', 300);
     dino_3 = new Dinosaur('Gallimimus', 'omnivore', 50);
     dino_4 = new Dinosaur('Stegosaurus', 'herbivore', 100);
+    dino_5 = new Dinosaur('Stegosaurus', 'herbivore', 100);
   })
 
   it('should have a name', function() {
@@ -53,7 +54,13 @@ describe('Park', function() {
     assert.strictEqual(expected, park.findMostGuestsDino());
   });
 
-  it('should be able to find all dinosaurs of a particular species');
+  it('should be able to find all dinosaurs of a particular species', function() {
+    park.addDino(dino_3);
+    park.addDino(dino_4);
+    park.addDino(dino_5);
+    const expected = [dino_4, dino_5];
+    assert.deepStrictEqual(expected, park.findDinosBySpecies('Stegosaurus'));
+  });
 
   it('should be able to calculate the total number of visitors per day');
 

@@ -23,6 +23,17 @@ Park.prototype.findMostGuestsDino = function() {
         }
     }
     return most_guests_dino;
-} ;
+};
+
+Park.prototype.findDinosBySpecies = function(species) {
+    let new_collection_by_species = [];
+    for (let i = 0; i < this.dino_collection.length; i++) {
+        let dino = this.dino_collection[i];
+        if (dino.species == species) {
+            new_collection_by_species.push(dino);
+        }
+    }
+    return new_collection_by_species;
+}
 
 module.exports = Park;
