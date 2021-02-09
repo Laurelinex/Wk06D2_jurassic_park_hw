@@ -4,11 +4,16 @@ const Dinosaur = require('../models/dinosaur.js');
 
 describe('Park', function() {
 
-  beforeEach(function () {
+  let park;
 
+  beforeEach(function () {
+    park = new Park('Dinosaur Digs');
   })
 
-  it('should have a name');
+  it('should have a name', function() {
+    const expected = 'Dinosaur Digs';
+    assert.strictEqual(expected, park.name)
+  });
 
   it('should have a ticket price');
 
