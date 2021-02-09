@@ -34,6 +34,15 @@ Park.prototype.findDinosBySpecies = function(species) {
         }
     }
     return new_collection_by_species;
-}
+;}
+
+Park.prototype.calculateTotalVisitorsPerDay = function() {
+    let visitors_per_day = 0;
+    for (let i = 0; i < this.dino_collection.length; i++) {
+        let dino = this.dino_collection[i];
+        visitors_per_day += dino.guestsAttractedPerDay;
+    }
+    return visitors_per_day;
+};
 
 module.exports = Park;

@@ -62,7 +62,12 @@ describe('Park', function() {
     assert.deepStrictEqual(expected, park.findDinosBySpecies('Stegosaurus'));
   });
 
-  it('should be able to calculate the total number of visitors per day');
+  it('should be able to calculate the total number of visitors per day', function() {
+    park.addDino(dino_1);
+    park.addDino(dino_2);
+    const expected = 500;
+    assert.strictEqual(expected, park.calculateTotalVisitorsPerDay());
+  });
 
   it('should be able to calculate the total number of visitors per year');
 
