@@ -69,7 +69,13 @@ describe('Park', function() {
     assert.strictEqual(expected, park.calculateTotalVisitorsPerDay());
   });
 
-  it('should be able to calculate the total number of visitors per year');
+  it('should be able to calculate the total number of visitors per year', function() {
+    park.addDino(dino_1);
+    park.addDino(dino_2);
+    park.calculateTotalVisitorsPerDay();
+    const expected = 182500;
+    assert.strictEqual(expected, park.calculateTotalVisitorsPerYear());
+  });
 
   it('should be able to calculate total revenue for one year');
 

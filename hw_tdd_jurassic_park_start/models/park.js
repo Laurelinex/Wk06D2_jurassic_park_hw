@@ -45,4 +45,9 @@ Park.prototype.calculateTotalVisitorsPerDay = function() {
     return visitors_per_day;
 };
 
+Park.prototype.calculateTotalVisitorsPerYear = function() {
+    const average_days_in_year = 365;
+    return this.calculateTotalVisitorsPerDay() * average_days_in_year;
+}
+
 module.exports = Park;
