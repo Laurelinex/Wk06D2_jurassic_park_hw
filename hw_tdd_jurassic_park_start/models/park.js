@@ -1,68 +1,82 @@
-const Park = function (name, ticket_price) {
+const Dinosaur = require("./dinosaur");
+
+const Park = function (name, ticketPrice) {
     this.name = name;
-    this.ticket_price = ticket_price;
-    this.dino_collection = [];
+    this.ticketPrice = ticketPrice;
+    this.dinoCollection = [];
 };
 
 Park.prototype.addDino = function(dino) {
-    this.dino_collection.push(dino);
+    this.dinoCollection.push(dino);
 };
 
 Park.prototype.removeDino = function(dino) {
-    const indexOfDino = this.dino_collection.indexOf(dino);
-    this.dino_collection.splice(indexOfDino, 1);
+    const indexOfDino = this.dinoCollection.indexOf(dino);
+    this.dinoCollection.splice(indexOfDino, 1);
 };
 
 Park.prototype.findMostGuestsDino = function() {
-    let most_guests_dino = this.dino_collection[0];
-    for (let i = 0; i < this.dino_collection.length; i++) {
-        let dino = this.dino_collection[i];
-        let dino_guests = dino.guestsAttractedPerDay;
-        if (dino_guests > most_guests_dino.guestsAttractedPerDay) {
-            most_guests_dino = dino;
+    let mostGuestsDino = this.dinoCollection[0];
+    for (let i = 0; i < this.dinoCollection.length; i++) {
+        let dino = this.dinoCollection[i];
+        let dinoGuests = dino.guestsAttractedPerDay;
+        if (dinoGuests > mostGuestsDino.guestsAttractedPerDay) {
+            mostGuestsDino = dino;
         }
     }
-    return most_guests_dino;
+    return mostGuestsDino;
 };
 
 Park.prototype.findDinosBySpecies = function(species) {
-    let new_collection_by_species = [];
-    for (let i = 0; i < this.dino_collection.length; i++) {
-        let dino = this.dino_collection[i];
+    let newCollectionBySpecies = [];
+    for (let i = 0; i < this.dinoCollection.length; i++) {
+        let dino = this.dinoCollection[i];
         if (dino.species == species) {
-            new_collection_by_species.push(dino);
+            newCollectionBySpecies.push(dino);
         }
     }
-    return new_collection_by_species;
+    return newCollectionBySpecies;
 };
 
 Park.prototype.calculateTotalVisitorsPerDay = function() {
-    let visitors_per_day = 0;
-    for (let i = 0; i < this.dino_collection.length; i++) {
-        let dino = this.dino_collection[i];
-        visitors_per_day += dino.guestsAttractedPerDay;
+    let visitorsPerDay = 0;
+    for (let i = 0; i < this.dinoCollection.length; i++) {
+        let dino = this.dinoCollection[i];
+        visitorsPerDay += dino.guestsAttractedPerDay;
     }
-    return visitors_per_day;
+    return visitorsPerDay;
 };
 
 Park.prototype.calculateTotalVisitorsPerYear = function() {
-    const average_days_in_year = 365;
-    return this.calculateTotalVisitorsPerDay() * average_days_in_year;
+    const averageDaysInYear = 365;
+    return this.calculateTotalVisitorsPerDay() * averageDaysInYear;
 };
 
 Park.prototype.calculateYearlyRevenue = function() {
-    return this.calculateTotalVisitorsPerYear() * this.ticket_price;
+    return this.calculateTotalVisitorsPerYear() * this.ticketPrice;
 };
 
 Park.prototype.removeAllDinosBySpecies = function(species) {
-    const collection_without_species = [];
-    for (let i = 0; i < this.dino_collection.length; i++) {
-        let dino = this.dino_collection[i];
+    const collectionWithoutScpecies = [];
+    for (let i = 0; i < this.dinoCollection.length; i++) {
+        let dino = this.dinoCollection[i];
         if (dino.species != species) {
-            collection_without_species.push(dino);
+            collectionWithoutScpecies.push(dino);
         }
     }
-    return collection_without_species;
+    return collectionWithoutScpecies;
 };
+
+Park.prototype.numberOfDinosaursByDiet = function() {
+    const numberOfDinosaursByDiet = {};
+    for (const dino of this.dinoCollection) {
+        if (numberOfDinosaursByDiet[dino.diet]) {
+            numberOfDinosaursByDiet[dino.diet] += 1;
+        } else {
+            numberOfDinosaursByDiet[dino.diet] = 1;
+        }
+    }
+    return numberOfDinosaursByDiet;
+}
 
 module.exports = Park;

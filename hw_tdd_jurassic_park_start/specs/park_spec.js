@@ -5,7 +5,11 @@ const Dinosaur = require('../models/dinosaur.js');
 describe('Park', function() {
 
   let park;
-  let dino1;
+  let dino_1;
+  let dino_2;
+  let dino_3;
+  let dino_4;
+  let dino_5;
 
   beforeEach(function () {
     park = new Park('Dinosaur Digs', 6.50);
@@ -23,18 +27,18 @@ describe('Park', function() {
 
   it('should have a ticket price', function() {
     const expected = 6.50;
-    assert.strictEqual(expected, park.ticket_price)
+    assert.strictEqual(expected, park.ticketPrice)
   });
 
   it('should have a collection of dinosaurs', function() {
     const expected = [];
-    assert.deepStrictEqual(expected, park.dino_collection)
+    assert.deepStrictEqual(expected, park.dinoCollection)
   });
     
   it('should be able to add a dinosaur to its collection', function() {
     park.addDino(dino_1);
     const expected = [dino_1];
-    assert.deepStrictEqual(expected, park.dino_collection)
+    assert.deepStrictEqual(expected, park.dinoCollection)
   });
 
   it('should be able to remove a dinosaur from its collection', function() {
@@ -42,7 +46,7 @@ describe('Park', function() {
     park.addDino(dino_2);
     park.removeDino(dino_2);
     const expected = [dino_1];
-    assert.deepStrictEqual(expected, park.dino_collection)
+    assert.deepStrictEqual(expected, park.dinoCollection)
   });
 
   it('should be able to find the dinosaur that attracts the most visitors', function() {
@@ -89,6 +93,15 @@ describe('Park', function() {
     park.addDino(dino_5);
     const expected = [dino_3];
     assert.deepStrictEqual(expected, park.removeAllDinosBySpecies('Stegosaurus'));
+  });
+
+  it('should be able to calculate number of dinosaurs for each diet type', function() {
+    park.addDino(dino_1);
+    park.addDino(dino_2);
+    park.addDino(dino_3);
+    park.addDino(dino_4);
+    const expected = {carnivore: 1, omnivore: 2, herbivore: 1};
+    assert.deepStrictEqual(expected, park.numberOfDinosaursByDiet());
   })
 
 });
